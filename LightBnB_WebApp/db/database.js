@@ -41,7 +41,6 @@ const getUserWithEmail = function (email) {
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithId = function (id) {
-  // return Promise.resolve(users[id]);
   return pool
   .query(`SELECT * FROM users WHERE id = $1`, [id])
   .then((result) => {
@@ -152,8 +151,6 @@ const getAllProperties = function (options, limit = 10) {
   ORDER BY cost_per_night
   LIMIT $${queryParams.length};
   `;
-
-  // console.log(queryString, queryParams);
 
   return pool.query(queryString, queryParams)
   .then((result) => {
